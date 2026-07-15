@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ウラノチカゲ | ポートフォリオ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #14141f;
+  --surface2: #1c1c2e;
+  --accent: #ff6b35;
+  --accent2: #ffb347;
+  --text: #e8e6e3;
+  --text-muted: #8a8a9a;
+  --border: #2a2a3e;
+  --card-radius: 16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+}
+nav .logo {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800; font-size: 1.2rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+nav ul { list-style: none; display: flex; gap: 1.8rem; }
+nav a {
+  color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
+  font-weight: 500; transition: color 0.3s; letter-spacing: 0.03em;
+}
+nav a:hover { color: var(--accent); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 6rem 2rem 4rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(255,107,53,0.08), transparent),
+              radial-gradient(ellipse 40% 40% at 20% 80%, rgba(255,179,71,0.05), transparent);
+}
+.hero-inner {
+  max-width: 1100px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: center; position: relative; z-index: 1;
+}
+.hero-text h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800; line-height: 1.15; margin-bottom: 0.6rem;
+}
+.hero-text h1 span {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-text .subtitle {
+  font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;
+}
+.hero-text .role {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #000; font-weight: 700; padding: 0.4rem 1.2rem;
+  border-radius: 100px; font-size: 0.85rem; letter-spacing: 0.05em;
+}
+.hero-photo { display: flex; justify-content: center; }
+.hero-photo img {
+  width: 340px; height: 340px; object-fit: cover;
+  border-radius: 24px; border: 3px solid var(--border);
+  box-shadow: 0 20px 60px rgba(255,107,53,0.1);
+}
+
+/* ===== SECTIONS ===== */
+section {
+  max-width: 1100px; margin: 0 auto; padding: 5rem 2rem;
+}
+.section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.section-title .num {
+  font-size: 0.85rem; color: var(--accent);
+  font-weight: 600; letter-spacing: 0.1em;
+}
+.section-sub {
+  color: var(--text-muted); font-size: 0.9rem; margin-bottom: 3rem;
+}
+
+/* ===== PROFILE ===== */
+.profile-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+}
+.profile-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.profile-item label {
+  font-size: 0.75rem; color: var(--accent); text-transform: uppercase;
+  font-weight: 700; letter-spacing: 0.12em; display: block; margin-bottom: 0.3rem;
+}
+.profile-item p { font-size: 1rem; }
+.profile-item a { color: var(--accent2); text-decoration: none; }
+.skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.skill-tag {
+  background: var(--surface2); border: 1px solid var(--border);
+  padding: 0.4rem 1rem; border-radius: 100px;
+  font-size: 0.82rem; font-weight: 500; color: var(--text);
+  transition: border-color 0.3s, background 0.3s;
+}
+.skill-tag:hover {
+  border-color: var(--accent); background: rgba(255,107,53,0.08);
+}
+
+/* ===== WORKS ===== */
+.works-category { margin-bottom: 4rem; }
+.works-category h3 {
+  font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;
+  padding-left: 1rem; border-left: 3px solid var(--accent);
+}
+.works-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+.work-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--card-radius); overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.work-card:hover {
+  transform: translateY(-4px); border-color: var(--accent);
+  box-shadow: 0 12px 40px rgba(255,107,53,0.1);
+}
+.work-card img {
+  width: 100%; height: 200px; object-fit: cover;
+  border-bottom: 1px solid var(--border);
+}
+.work-card-dual-img {
+  display: flex; height: 200px;
+  border-bottom: 1px solid var(--border);
+}
+.work-card-dual-img img {
+  width: 50%; height: 100%; object-fit: cover; border-bottom: none;
+}
+.work-card-dual-img img:first-child {
+  border-right: 1px solid var(--border);
+}
+.work-card-body { padding: 1.2rem 1.4rem; }
+.work-card-body h4 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+.work-card-body .genre { font-size: 0.8rem; color: var(--accent2); margin-bottom: 0.5rem; }
+.work-card-body .meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+.work-card-body .tech-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.work-card-body .tech-tag {
+  background: rgba(255,107,53,0.1); color: var(--accent);
+  font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 100px; font-weight: 600;
+}
+
+/* ===== DETAIL ===== */
+.detail-section {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--card-radius); padding: 2.5rem; margin-bottom: 3rem;
+}
+.detail-section h3 {
+  font-size: 1.6rem; font-weight: 800; margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.detail-section h3 .emoji { font-size: 1.4rem; }
+.detail-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
+}
+.detail-grid img {
+  width: 100%; border-radius: 12px; border: 1px solid var(--border);
+}
+.detail-content { display: flex; flex-direction: column; gap: 1rem; }
+.point-box {
+  background: var(--surface2); border-left: 3px solid var(--accent);
+  padding: 1rem 1.2rem; border-radius: 0 8px 8px 0;
+}
+.point-box h5 {
+  font-size: 0.85rem; color: var(--accent); margin-bottom: 0.4rem; font-weight: 700;
+}
+.point-box p { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); }
+.link-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #000; font-weight: 700; padding: 0.6rem 1.4rem;
+  border-radius: 100px; text-decoration: none; font-size: 0.85rem;
+  transition: opacity 0.3s;
+}
+.link-btn:hover { opacity: 0.85; }
+
+/* ===== INTERNSHIP ===== */
+.intern-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--card-radius); overflow: hidden;
+}
+.intern-header {
+  display: flex; align-items: center; gap: 1.2rem;
+  padding: 1.5rem 2rem; background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+}
+.intern-header img { height: 36px; }
+.intern-header .company { font-weight: 700; font-size: 1.1rem; }
+.intern-header .project { color: var(--text-muted); font-size: 0.9rem; }
+.intern-body {
+  padding: 2rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+}
+.intern-body img {
+  width: 100%; border-radius: 12px; border: 1px solid var(--border);
+}
+.intern-points { display: flex; flex-direction: column; gap: 1rem; }
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center; padding: 3rem 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted); font-size: 0.8rem;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  nav ul { display: none; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+  .hero-photo img { width: 240px; height: 240px; }
+  .profile-grid { grid-template-columns: 1fr; }
+  .works-grid { grid-template-columns: 1fr; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .intern-body { grid-template-columns: 1fr; }
+  .detail-section { padding: 1.5rem; }
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-up {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">CHIKAGE URANO</div>
+  <ul>
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#detail">Detail</a></li>
+    <li><a href="#internship">Internship</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1><span>ウラノチカゲ</span></h1>
+      <p class="subtitle">浦野 慶夏 ― バンタンゲームアカデミー大阪校 高等部</p>
+      <span class="role">GAME PROGRAMMER</span>
+    </div>
+    <div class="hero-photo">
+      <img src="images/cover.jpg" alt="Cover">
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROFILE ===== -->
+<section id="profile">
+  <div class="fade-up">
+    <p class="section-title"><span class="num">01</span> Profile</p>
+    <p class="section-sub">プロフィール</p>
+    <div class="profile-grid">
+      <div class="profile-info">
+        <div class="profile-item">
+          <label>所属</label>
+          <p>バンタンゲームアカデミー大阪校 高等部<br>ゲームプログラマー専攻</p>
+        </div>
+        <div class="profile-item">
+          <label>希望職種</label>
+          <p>ゲームプログラマー</p>
+        </div>
+        <div class="profile-item">
+          <label>Mail</label>
+          <p><a href="mailto:uranochikage@gmail.com">uranochikage@gmail.com</a></p>
+        </div>
+        <div class="profile-item">
+          <label>趣味</label>
+          <p>さんぽ・ゲーム・アニメーション鑑賞</p>
+        </div>
+      </div>
+      <div>
+        <div class="profile-item">
+          <label>使用技術</label>
+          <div class="skills-list" style="margin-top:0.5rem">
+            <span class="skill-tag">Unity (C#)</span>
+            <span class="skill-tag">Unreal Engine 5 (BP)</span>
+            <span class="skill-tag">PUN2</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Meta Quest 2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORKS ===== -->
+<section id="works">
+  <div class="fade-up">
+    <p class="section-title"><span class="num">02</span> Works</p>
+    <p class="section-sub">主な作品</p>
+
+    <div class="works-category">
+      <h3>個人制作</h3>
+      <div class="works-grid">
+        <div class="work-card">
+          <div class="work-card-dual-img">
+            <img src="images/シンクハンター1.png" alt="シンクハンター 1">
+            <img src="images/シンクハンター2.png" alt="シンクハンター 2">
+          </div>
+          <div class="work-card-body">
+            <h4>シンクハンター</h4>
+            <p class="genre">TRPG（タクティクスっぽいRPG）</p>
+            <p class="meta">コンセプト「頭を使って敵を倒そう」 ／ 制作期間 4ヶ月 ／ 2年生12月制作</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">Editor拡張</span>
+              <span class="tech-tag">ScriptableObject</span>
+              <span class="tech-tag">JSON</span>
+              <span class="tech-tag">タクティクス敵AI</span>
+              <span class="tech-tag">Excel</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card" onclick="document.getElementById('yubi-detail').scrollIntoView({behavior:'smooth'})">
+          <img src="images/versus.jpg" alt="指のアレ">
+          <div class="work-card-body">
+            <h4>指のアレ</h4>
+            <p class="genre">対戦型指シミュレーション</p>
+            <p class="meta">コンセプト「指から始まる超絶心戦！！」 ／ 制作期間 3ヶ月 ／ 2年生9月制作</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">PUN2</span>
+              <span class="tech-tag">MiniMax</span>
+              <span class="tech-tag">αβ法</span>
+              <span class="tech-tag">RPC</span>
+              <span class="tech-tag">インターフェース設計</span>
+              <span class="tech-tag">Editor拡張</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <img src="images/あの広告ゲー.png" alt="あの広告ゲー">
+          <div class="work-card-body">
+            <h4>あの広告ゲー</h4>
+            <p class="genre">ランゲーム</p>
+            <p class="meta">コンセプト「できるだけ数を増やす」 ／ 制作期間 5日 ／ 2年生6月制作</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">オブジェクトプール</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <img src="images/カツ丼ざんまい!!.png" alt="カツ丼ざんまい!!">
+          <div class="work-card-body">
+            <h4>カツ丼ざんまい！！</h4>
+            <p class="genre">タイピングゲーム</p>
+            <p class="meta">コンセプト「カツ丼を完成させろ」 ／ 制作期間 1週間 ／ 2年生6月制作</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">文字列処理</span>
+              <span class="tech-tag">入力判定</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card" onclick="document.getElementById('vs-detail').scrollIntoView({behavior:'smooth'})">
+          <img src="images/VS.png" alt="バーサス">
+          <div class="work-card-body">
+            <h4>バーサス</h4>
+            <p class="genre">PvP対戦タイミングゲーム</p>
+            <p class="meta">コンセプト「二人でワイワイ」 ／ 制作期間 1週間 ／ 2年生5月制作</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">UniTask</span>
+              <span class="tech-tag">Cinemachine</span>
+              <span class="tech-tag">オブジェクトプール</span>
+              <span class="tech-tag">画面揺れ</span>
+              <span class="tech-tag">気持ちよさ◎</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <img src="images/KnockKnockMogura.png" alt="KnockKnockMogura">
+          <div class="work-card-body">
+            <h4>KnockKnockMogura</h4>
+            <p class="genre">モグラたたき</p>
+            <p class="meta">コンセプト「モグラ以外は叩くなよ...？」 ／ 制作期間 5日 ／ 2年生5月制作</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">オブジェクトプール</span>
+              <span class="tech-tag">ScriptableObject</span>
+              <span class="tech-tag">UniTask</span>
+              <span class="tech-tag">Editor拡張</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card" onclick="document.getElementById('pickme-detail').scrollIntoView({behavior:'smooth'})">
+          <img src="images/Pick!Me!.png" alt="Pick!Me!">
+          <div class="work-card-body">
+            <h4>Pick!Me!</h4>
+            <p class="genre">AIアクションゲーム</p>
+            <p class="meta">コンセプト「オタカラを段取りよく集めよう！」 ／ 制作期間 3ヶ月 ／ 1年生9月制作</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">NavMesh AI</span>
+              <span class="tech-tag">放射軌道計算</span>
+              <span class="tech-tag">AI状態遷移</span>
+              <span class="tech-tag">自作イージング</span>
+              <span class="tech-tag">円形配置計算</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-card-dual-img">
+            <img src="images/Onebutton1.png" alt="OneButton 1">
+            <img src="images/OneButton2.png" alt="OneButton 2">
+          </div>
+          <div class="work-card-body">
+            <h4>OneButton</h4>
+            <p class="genre">タイミングゲーム</p>
+            <p class="meta">コンセプト「ボタン一つでタイミング」 ／ 制作期間 1週間 ／ 1年生6月制作</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">コルーチン</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <img src="images/BunnyBall.png" alt="BunnyBall">
+          <div class="work-card-body">
+            <h4>BunnyBall</h4>
+            <p class="genre">ランゲーム</p>
+            <p class="meta">コンセプト「壁に当たるな加速しろ！」 ／ 制作期間 1週間 ／ 1年生4月制作</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="works-category">
+      <h3>チーム制作</h3>
+      <div class="works-grid">
+        <div class="work-card">
+          <img src="images/tenbin.jpg" alt="天秤">
+          <div class="work-card-body">
+            <h4>天秤</h4>
+            <p class="genre">ノベル＆ステルス</p>
+            <p class="meta">コンセプト「選択」 ／ 製作期間 6ヶ月 ／ 3年生4月制作</p>
+            <p class="meta">担当：仕様改修、スケジュール管理、敵AI、ゲームループ、GitHub管理</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">ステートパターン</span>
+              <span class="tech-tag">Editor拡張</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card" onclick="document.getElementById('vr-detail').scrollIntoView({behavior:'smooth'})">
+          <img src="images/vr_shateki_thumb.jpg" alt="VR射的">
+          <div class="work-card-body">
+            <h4>VR射的</h4>
+            <p class="genre">VRシューティング</p>
+            <p class="meta">コンセプト「時間内に沢山ポイントを稼ぐ」 ／ 製作期間 2ヶ月 ／ 2年生11月制作</p>
+            <p class="meta">担当：企画、仕様作成、VRのInput、弾の発射処理</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">Meta Quest 2</span>
+              <span class="tech-tag">Editor拡張</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <img src="images/kokuhaku.jpg" alt="どっかん！告白クラッシャー！">
+          <div class="work-card-body">
+            <h4>どっかん！告白クラッシャー！</h4>
+            <p class="genre">妨害タイミングゲーム</p>
+            <p class="meta">コンセプト「最適タイミングでボタンを押す」 ／ 製作期間 4日 ／ 2年生8月制作</p>
+            <p class="meta">担当：プログラム全体、ランキング表示</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <img src="images/Up×Up.png" alt="UpUp">
+          <div class="work-card-body">
+            <h4>Up×Up</h4>
+            <p class="genre">アクション</p>
+            <p class="meta">コンセプト「塔を上っていくアクション」 ／ 製作期間 4日 ／ 2年生後期3月制作</p>
+            <p class="meta">担当：ステージギミックの処理</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unreal Engine</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <img src="images/rescue.jpg" alt="レスキューキャタツマン">
+          <div class="work-card-body">
+            <h4>レスキューキャタツマン</h4>
+            <p class="genre">アクション</p>
+            <p class="meta">コンセプト「イライラバカゲー」 ／ 製作期間 3日 ／ 1年生後期3月制作</p>
+            <p class="meta">担当：プレイヤーの動き、一部のレベルデザイン</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">PUN2</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <img src="images/BlackJack.png" alt="ブラックジャック">
+          <div class="work-card-body">
+            <h4>ブラックジャック</h4>
+            <p class="genre">カードゲーム</p>
+            <p class="meta">コンセプト「ベット有のブラックジャック」 ／ 製作期間 2週間 ／ 1年生11月制作</p>
+            <p class="meta">担当：リードプログラマとしてゲームループ・ベット機能、キャラデザとの連絡</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <img src="images/Quiz.png" alt="Quiz">
+          <div class="work-card-body">
+            <h4>Quiz</h4>
+            <p class="genre">クイズ</p>
+            <p class="meta">コンセプト「少女が遅刻しないように立ちはだかるクイズを解け」 ／ 製作期間 3日 ／ 1年生8月制作</p>
+            <p class="meta">担当：問題出し、ゲームループ、デザイナーとの連絡</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Unity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DETAIL ===== -->
+<section id="detail">
+  <div class="fade-up">
+    <p class="section-title"><span class="num">03</span> Detail</p>
+    <p class="section-sub">作品詳細</p>
+
+    <div class="detail-section" id="yubi-detail">
+      <h3><span class="emoji">👆</span> 指のアレ</h3>
+      <div class="detail-grid">
+        <video src="images/movie_Yubi.mp4" controls width="100%"></video>
+        <div class="detail-content">
+          <div class="point-box">
+            <h5>ポイント</h5>
+            <p>「誰でも知ってる"指のゲーム"をデジタルで再現したら面白そう！」という発想から制作。PUN2を用いたターン制のオンライン対戦を実装し、通信越しでも指の読み合いが楽しめるゲームを目指した。</p>
+          </div>
+          <div class="point-box">
+            <h5>〜突き当たった問題〜</h5>
+            <p>当初は通信に関する知識不足からリアルタイム同期での実装を試みたが、処理負荷や同期の難しさにより安定した動作が困難な状態となった。</p>
+          </div>
+          <div class="point-box">
+            <h5>〜そして、解決へ〜</h5>
+            <p>設計を見直し、通信では数値や状態などの最小限のデータのみを受け渡す方式へと変更。対戦構造を「受信データをもとに動作するAI対プレイヤー」に再構築することに成功し、対戦相手が途中退出した場合でもAIが自動的に対戦を引き継ぐ仕組みを実現した。</p>
+          </div>
+          <div class="point-box">
+            <h5>操作設計</h5>
+            <p>Unity Roomに投稿予定だったので、子供でPCを持ってる子は少なそうだったためスマホからでも、マウスからでも直感的にDrag&amp;Dropで操作できるようにした。</p>
+          </div>
+          <a href="https://unityroom.com/games/yubi_no_are" target="_blank" class="link-btn">
+            🎮 Unity Roomで遊ぶ →
+          </a>
+          <a href="https://github.com/UranoChikage/Unity_Yubi-sAre" target="_blank" class="link-btn">
+            💻 GitHub →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section" id="pickme-detail">
+      <h3><span class="emoji">💎</span> Pick!Me!</h3>
+      <div class="detail-grid">
+        <video src="images/movie_Pick!Me!.mp4" controls width="100%"></video>
+        <div class="detail-content">
+          <div class="point-box">
+            <h5>ゲームのポイント</h5>
+            <p>好きなゲーム「ピクミン」をモチーフに、AIキャラクターを使って宝を集める仕組みを自分で実装してみたくて制作した。効率よくオタカラを運んでタイムを競おう！プレイヤーに忠実に従うマシュ丸を投げて、オタカラをハウシュルームに運ばせるとマシュ丸が増えて探索効率がどんどんアップ！タイムアップもあるので気を付けて。操作は簡単。投げる、呼ぶ！主にこの２つだけ！</p>
+          </div>
+          <div class="point-box">
+            <h5>〜突き当たった問題〜</h5>
+            <p>NavMeshの制御：本ゲームではNavMeshAgentでマシュ丸を移動させているが、投げる操作の際はNavMeshAgentを無効化する必要がある。当初はNavMeshAgentを有効のまま投げようとしたため、投げた瞬間にキャラクターが移動不能になるバグが発生した。</p>
+          </div>
+          <div class="point-box">
+            <h5>〜そして、解決へ〜</h5>
+            <p>投げる際は本体のマシュ丸を非表示にし、放射軌道に沿って飛ぶダミーオブジェクトを代わりに表示。着地地点でマシュ丸を再召喚する方式に変更した。ウェブ上のAIや技術ブログを活用しながら試行錯誤し、この実装にたどり着いた。</p>
+          </div>
+          <a href="https://github.com/UranoChikage/Unity_PickMe-" target="_blank" class="link-btn">
+            💻 GitHub →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section" id="vs-detail">
+      <h3><span class="emoji">⚡</span> バーサス</h3>
+      <div class="detail-grid">
+        <video src="images/movie_VS.mp4" controls width="100%"></video>
+        <div class="detail-content">
+          <div class="point-box">
+            <h5>ポイント</h5>
+            <p>「二人でワイワイ盛り上がれるゲームを作りたい」という発想から、同じ画面を共有して遊ぶローカル対戦のタイミングゲームを制作。UniTaskを活用した非同期処理により、テンポよく気持ちのよい操作感を実現した。</p>
+          </div>
+          <div class="point-box">
+            <h5>こだわりポイント</h5>
+            <p>ファミコンはABボタンと十字キーで遊べるが、それより少ないボタン数でゲームを作れるか挑戦したかった。ボタンを押すタイミングの判定だけでなく、ヒット時のフィードバック（SE・エフェクト・画面揺れ）にもこだわり、「気持ちよさ◎」を目標に細部の演出を積み重ねた。</p>
+          </div>
+          <div class="point-box">
+            <h5>制作規模</h5>
+            <p>制作期間 1週間 ／ 2年生5月制作 ／ 個人制作</p>
+          </div>
+          <a href="https://unityroom.com/games/vs" target="_blank" class="link-btn">
+            🎮 Unity Roomで遊ぶ →
+          </a>
+          <a href="https://github.com/UranoChikage/Unity_VS" target="_blank" class="link-btn">
+            💻 GitHub →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section" id="vr-detail">
+      <h3><span class="emoji">🔫</span> VR射的</h3>
+      <div class="detail-grid">
+        <video src="images/movie_VR射的.mp4" controls width="100%"></video>
+        <div class="detail-content">
+          <div class="point-box">
+            <h5>ポイント</h5>
+            <p>文化祭向けのVR射的ゲームをチームで制作。外部アセットを一切使わないようにしました。</p>
+          </div>
+          <div class="point-box">
+            <h5>〜企画と役割〜</h5>
+            <p>多くの来場者に遊んでもらうため、回転率を重視しつつ、シンプルで直感的かつ視覚的なインパクトのある設計を行った。プロジェクトリーダーとして企画立案と全体設計を担当し、実装面ではVRの入力処理および弾の発射処理を担当した。</p>
+          </div>
+          <div class="point-box">
+            <h5>〜お客さんの評価〜</h5>
+            <p>好評：撃って撃って撃ちまくるのが楽しい、ポイントが入ったときが気持ち良い。<br>不評：VRで髪型が崩れてしまう、メイクが崩れる。</p>
+          </div>
+          <div class="point-box">
+            <h5>〜改善点〜</h5>
+            <p>ゴーグルを被らず、VR以外に似たようなことができる、Joy-Conで代用した別作品を誠意制作中。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTERNSHIP ===== -->
+<section id="internship">
+  <div class="fade-up">
+    <p class="section-title"><span class="num">04</span> Internship</p>
+    <p class="section-sub">インターンシップ経験</p>
+
+    <div class="intern-card">
+      <div class="intern-header">
+        <img src="images/lobstudio_logo.jpg" alt="LobStudio">
+        <div>
+          <p class="company">ロブスタジオ株式会社</p>
+          <p class="project">Posthumors 早期リリース版</p>
+        </div>
+      </div>
+      <div class="intern-body">
+        <img src="images/posthumors.jpg" alt="Posthumors">
+        <div class="intern-points">
+          <div class="point-box">
+            <h5>Home画面のUI表示</h5>
+            <p>画面切り替え用のAnimation、ヒント表示のロジック、ゲーム終了用の動画再生。</p>
+          </div>
+          <div class="point-box">
+            <h5>セーブ用ウィンドウのUI表示</h5>
+            <p>スロットの日数・時間表示、セーブ/ロードの確認。担当箇所以外の処理などを一括管理できるように。</p>
+          </div>
+          <div class="point-box">
+            <h5>実装の上で気を付けたこと</h5>
+            <p>デバッグやパラメータ調整を行いやすくするため、Unity EditorのInspectorから各種値を変更可能な設計にした。プログラマ以外でも敵挙動や速度調整を行えるようにし、確認・調整コストを削減した。管理していたスプライトの命名が似たようなものが多かったので判別しやすいようAttributeを作成し、コードに付与することで視覚的に確認可能にすることで誤設定を防止することに成功した。</p>
+          </div>
+          <a href="https://lobstudio.studio.site/posthumors-staff" target="_blank" class="link-btn">
+            🔗 スタッフページ →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 ウラノチカゲ ― Portfolio</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
