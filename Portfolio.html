@@ -234,6 +234,71 @@ section {
 }
 .intern-points { display: flex; flex-direction: column; gap: 1rem; }
 
+/* ===== TGS PROJECT ===== */
+.tgs-overview {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--card-radius); padding: 2rem 2.5rem; margin-bottom: 2.5rem;
+}
+.tgs-overview-header { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.tgs-overview-header h3 { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800; }
+.tgs-overview-header .genre { font-size: 0.85rem; color: var(--accent2); }
+.tgs-concept {
+  font-size: 1rem; color: var(--text); margin-bottom: 1.2rem;
+  padding-left: 1rem; border-left: 3px solid var(--accent); line-height: 1.6;
+}
+.tgs-team { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.2rem; }
+.tgs-role-note { font-size: 0.88rem; color: var(--text-muted); }
+.tgs-firsttime { margin-top: 0.6rem; color: var(--accent2); font-weight: 500; }
+
+.tgs-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem; margin-bottom: 2rem;
+}
+.tgs-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--card-radius); padding: 1.6rem;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.tgs-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.tgs-card { overflow: hidden; }
+.tgs-card-thumb {
+  display: block; width: calc(100% + 3.2rem); margin: -1.6rem -1.6rem 1rem;
+  height: 160px; object-fit: cover; border-bottom: 1px solid var(--border);
+}
+.tgs-card-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+.tgs-card h4 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+.tgs-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+
+.tgs-subhead { margin: 0.5rem 0 1.2rem; }
+.tgs-subhead h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; }
+.tgs-subhead-note { font-size: 0.8rem; color: var(--text-muted); }
+
+.tgs-test-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.2rem; margin-bottom: 2.5rem;
+}
+.tgs-test-item video { width: 100%; border-radius: 12px; border: 1px solid var(--border); display: block; }
+.tgs-test-item p { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center; font-weight: 600; }
+
+.tgs-thread-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem; margin-bottom: 2.5rem;
+}
+.tgs-thread-item img { width: 100%; border-radius: 12px; border: 1px solid var(--border); display: block; }
+.tgs-thread-item p { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.6rem; }
+
+.tgs-highlight {
+  background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,179,71,0.05));
+  border: 1px solid var(--accent); border-radius: var(--card-radius);
+  padding: 1.8rem 2.2rem;
+}
+.tgs-highlight h5 { font-size: 1rem; color: var(--accent); font-weight: 700; margin-bottom: 0.6rem; }
+.tgs-highlight p { font-size: 0.92rem; color: var(--text); line-height: 1.8; }
+
+@media (max-width: 768px) {
+  .tgs-overview { padding: 1.5rem; }
+}
+
 /* ===== FOOTER ===== */
 footer {
   text-align: center; padding: 3rem 2rem;
@@ -270,6 +335,8 @@ footer {
     <li><a href="#works">Works</a></li>
     <li><a href="#detail">Detail</a></li>
     <li><a href="#internship">Internship</a></li>
+    <li><a href="#tgs">TGS</a></li>
+    <li><a href="#engine">Engine</a></li>
   </ul>
 </nav>
 
@@ -319,6 +386,7 @@ footer {
             <span class="skill-tag">Unreal Engine 5 (BP)</span>
             <span class="skill-tag">PUN2</span>
             <span class="skill-tag">C++</span>
+            <span class="skill-tag">DirectX</span>
             <span class="skill-tag">GitHub</span>
             <span class="skill-tag">Meta Quest 2</span>
           </div>
@@ -723,8 +791,149 @@ footer {
   </div>
 </section>
 
+<!-- ===== TGS PROJECT ===== -->
+<section id="tgs">
+  <div class="fade-up">
+    <p class="section-title"><span class="num">05</span> TGS Project</p>
+    <p class="section-sub">TGS出展に向けた制作記録</p>
+
+    <div class="tgs-overview">
+      <div class="tgs-overview-header">
+        <h3>OTSUKURI（仮）</h3>
+        <p class="genre">体感型ガンシューティング ／ Unreal Engine 5.1</p>
+      </div>
+      <p class="tgs-concept">「飢饉を救うために、自慢の銃で電撃を放ち魚を捕獲！」</p>
+      <div class="tgs-team">
+        <span class="skill-tag">プランナー ×2</span>
+        <span class="skill-tag">システムプログラマー ×2</span>
+        <span class="skill-tag">ゲームプログラマー ×3</span>
+        <span class="skill-tag">VFX ×1</span>
+        <span class="skill-tag">3Dデザイナー ×2</span>
+        <span class="skill-tag">2Dデザイナー ×1</span>
+      </div>
+      <p class="tgs-role-note">ゲームプログラマーとしてチームに参加。担当領域に縛られず、モデリング・モーション・VFX・サウンドなど幅広い工程にも自主的に関わった。</p>
+      <p class="tgs-role-note tgs-firsttime">それまではUnityしか触れておらず、Unreal Engine（BP／C++）もモデリングも今回が初挑戦。未経験の領域にも臆せず飛び込み、実装まで持っていった。</p>
+    </div>
+
+    <div class="tgs-grid">
+      <div class="tgs-card">
+        <img class="tgs-card-thumb" src="images/TGSModeling.png" alt="3Dモデリング作業風景">
+        <div class="tgs-card-icon">🔫</div>
+        <h4>3Dモデリング</h4>
+        <p>銃などの小道具・小規模なプロップを自主的にモデリングして制作に持ち込んだ。</p>
+      </div>
+      <div class="tgs-card">
+        <img class="tgs-card-thumb" src="images/モーション付け.png" alt="モーション付け作業風景">
+        <div class="tgs-card-icon">🦈</div>
+        <h4>モーション</h4>
+        <p>リグ付きのサメモデルにモーションを付け、捕獲対象としての説得力を演出した。</p>
+      </div>
+      <div class="tgs-card">
+        <img class="tgs-card-thumb" src="images/TGSMaterial.png" alt="マテリアル/VFX作業風景">
+        <div class="tgs-card-icon">✨</div>
+        <h4>ポストプロセス／VFX</h4>
+        <p>ガンマ・ブルームの調整に加え、マテリアルのマスクを利用したパーツ単位の発光表現、ジオメトリコレクションを使った演出にも挑戦した。</p>
+      </div>
+      <div class="tgs-card">
+        <div class="tgs-card-icon">🎯</div>
+        <h4>手触り改善（演出×プログラム）</h4>
+        <p>「命中時の反応が薄く遊びが少ない」という課題に対し、命中タイミングでカーソルを発光させる処理・ロックオン時のアニメーション再生・カメラシェイクを実装し、体感を強化した。</p>
+      </div>
+      <div class="tgs-card">
+        <div class="tgs-card-icon">🎧</div>
+        <h4>サウンド</h4>
+        <p>Audacityでフリー音源を複数重ね、銃声らしい音を自作してSEとして組み込んだ。</p>
+      </div>
+      <div class="tgs-card">
+        <img class="tgs-card-thumb" src="images/TGSDeviceSetup.png" alt="ガンコントローラ接続作業風景">
+        <div class="tgs-card-icon">🕹️</div>
+        <h4>デバイス連携（ガンコントローラ）</h4>
+        <p>システムプログラマーと協力してガンコントローラの接続に取り組んだ。接続後もプラグインの編集、振動（ハプティクス）の調整、トラッキング処理にも携わった。</p>
+      </div>
+    </div>
+
+    <div class="tgs-subhead">
+      <h4>🎬 テスト映像の変遷</h4>
+      <p class="tgs-subhead-note">ファイル名の数字はテストを行った回数。数字が大きいほど新しいテスト。</p>
+    </div>
+    <div class="tgs-test-grid">
+      <div class="tgs-test-item">
+        <video src="images/Test3.mp4" controls></video>
+        <p>Test 3</p>
+      </div>
+      <div class="tgs-test-item">
+        <video src="images/Test11.mp4" controls></video>
+        <p>Test 11</p>
+      </div>
+      <div class="tgs-test-item">
+        <video src="images/Test20.mp4" controls></video>
+        <p>Test 20</p>
+      </div>
+    </div>
+
+    <div class="tgs-subhead">
+      <h4>💬 チーム内でのすり合わせ</h4>
+      <p class="tgs-subhead-note">Discordで案を出し合いながら方向性を固めていった一例。</p>
+    </div>
+    <div class="tgs-thread-grid">
+      <div class="tgs-thread-item">
+        <img src="images/アーケードのようにしたかったスレッド.png" alt="アーケードのようにしたかったスレッド">
+        <p>「アーケード風にしたい」という方向性の相談</p>
+      </div>
+      <div class="tgs-thread-item">
+        <img src="images/海っぽくしたかったスレッド.png" alt="海っぽくしたかったスレッド">
+        <p>「海っぽさを出したい」という方向性の相談</p>
+      </div>
+    </div>
+
+    <div class="tgs-highlight">
+      <h5>💡 企画提案エピソード</h5>
+      <p>当初は「画面に銃弾・銃を表示しない」方針だったが、表示した方が体感として面白くなると考え、自らテスト動画を作成してプランナーに提案。実際に確認してもらった上で仕様変更を通した。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ENGINE PROGRAMMING ===== -->
+<section id="engine">
+  <div class="fade-up">
+    <p class="section-title"><span class="num">06</span> Engine Programming</p>
+    <p class="section-sub">低レイヤーから学ぶ自作エンジン制作</p>
+
+    <div class="detail-section">
+      <h3><span class="emoji">⚙️</span> 自作ライブラリ＆物理エンジン</h3>
+      <div class="detail-grid">
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+          <video src="images/DirectX.mp4" controls width="100%"></video>
+          <img src="images/DirectX.png" alt="自作エンジンの実行画面">
+        </div>
+        <div class="detail-content">
+        <div class="point-box">
+          <h5>概要</h5>
+          <p>描画部分は学校のフレームワークを利用しつつ、それ以外はすべて自作。数学の行列ライブラリからRaycast、形状別の衝突判定、物理エンジンまで、低レイヤーの仕組みを一から実装した。</p>
+        </div>
+        <div class="point-box">
+          <h5>動機</h5>
+          <p>低レベルから触れることで演出の幅を広げられるのではと考えたこと、そして初めて受けたゲーム会社の筆記試験で実力不足を痛感し、基礎から勉強し直そうと決意したことがきっかけ。</p>
+        </div>
+        <div class="point-box">
+          <h5>制作物</h5>
+          <p>行列ライブラリ ／ Raycast ／ 形状別の衝突判定 ／ 物理エンジン</p>
+        </div>
+        <div class="point-box">
+          <h5>使用技術・制作期間</h5>
+          <p>C++ ／ DirectX ／ 制作期間 3ヶ月</p>
+        </div>
+        <div class="point-box">
+          <h5>やってみて</h5>
+          <p>ゼロから作ってみて「ゲームエンジンって偉大だな」と実感。せっかく自作したので、実際の自分のゲーム制作にも活用していきたい。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <p>© 2025 ウラノチカゲ ― Portfolio</p>
+  <p>© 2026 ウラノチカゲ ― Portfolio</p>
 </footer>
 
 <script>
