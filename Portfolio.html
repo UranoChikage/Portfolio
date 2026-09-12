@@ -904,6 +904,14 @@ footer {
         <div style="display:flex; flex-direction:column; gap:1rem;">
           <video src="images/DirectX.mp4" controls width="100%"></video>
           <img src="images/DirectX.png" alt="自作エンジンの実行画面">
+          <div class="point-box">
+            <h5>制作物</h5>
+            <p>行列ライブラリ ／ Raycast ／ 形状別の衝突判定 ／ 物理エンジン</p>
+          </div>
+          <div class="point-box">
+            <h5>使用技術・制作期間</h5>
+            <p>C++ ／ DirectX ／ 制作期間 3ヶ月</p>
+          </div>
         </div>
         <div class="detail-content">
         <div class="point-box">
@@ -911,16 +919,16 @@ footer {
           <p>描画部分は学校のフレームワークを利用しつつ、それ以外はすべて自作で頑張ってみようと数学の行列ライブラリからRaycast、形状別の衝突判定、物理エンジンまで、低レイヤーの仕組みを一から実装した。</p>
         </div>
         <div class="point-box">
+          <h5>〜突き当たった問題〜</h5>
+          <p>Boxコリジョンの実装にあたり、回転行列を学びながらAABB（軸並行境界ボックス）とOBB（有向境界ボックス）の存在を知った。AABBは何とか実装できたものの、回転を考慮するOBBの判定方法が理解できず行き詰まった。</p>
+        </div>
+        <div class="point-box">
+          <h5>〜そして、解決へ〜</h5>
+          <p>Unityのローカル座標とワールド座標の関係を思い出し、この考え方を応用することを思いつく。まず3×3の回転行列を4×4の行列に拡張し、逆回転行列を使って対象をローカル座標系に戻すことで、回転済みの箱同士でもAABBの判定式がそのまま使える状態を作り出す実装にたどり着いた。</p>
+        </div>
+        <div class="point-box">
           <h5>動機</h5>
           <p>低レベルから触れることで演出の幅を広げられるのではと考えたこと、そして初めて受けたゲーム会社の筆記試験で実力不足を痛感し、基礎から勉強し直そうと決意したことがきっかけ。</p>
-        </div>
-        <div class="point-box">
-          <h5>制作物</h5>
-          <p>行列ライブラリ ／ Raycast ／ 形状別の衝突判定 ／ 物理エンジン</p>
-        </div>
-        <div class="point-box">
-          <h5>使用技術・制作期間</h5>
-          <p>C++ ／ DirectX ／ 制作期間 3ヶ月</p>
         </div>
         <div class="point-box">
           <h5>やってみて</h5>
